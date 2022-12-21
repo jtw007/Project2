@@ -72,7 +72,10 @@ router.post('/login', async(req,res) => {
 
 //GET /users/logout -- clear any cookies and redirect to the homepage 
 router.get('/logout', (req,res) => {
-    res.send('log the user out by clearing the cookie')
+    //log the user our by removing the cookie
+    //make a get req to /
+    res.clearCookie('userId')
+    res.redirect('/')
 })
 
 //export the router
