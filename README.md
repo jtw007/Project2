@@ -28,10 +28,10 @@ const config = { headers: { X-Api-Key: API_KEY}}
 axios.get(url, config)
 
 ## ERDS
-<img src='ERD.png'>
+<img src='./imgs/ERD.png'>
 
 ## Restful Routing Chart
-<img src='restful.png'>
+<img src='./imgs/restful.png'>
 
 ## Wireframes
 
