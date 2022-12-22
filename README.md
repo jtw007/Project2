@@ -37,6 +37,9 @@ axios.get(url, config)
 <img src='./imgs/Home-page.png'>
 <img src='./imgs/favorites.png'>
 
+## Example Pull Request 
+<img src='./imgs/example-pull.png'>
+
 ## User Stories
 As a user, I want to be able to:
 * view the user profile
