@@ -3,6 +3,7 @@ require('dotenv').config()
 const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
+const crypto = require('crypto-js')
 
 //app config
 const app = express()
@@ -19,8 +20,11 @@ app.use(cookieParser())
 app.use(async (req,res,next) => {
     try {
         if (req.cookies.userId) {
+            // decrypt the user id and turn into string
+            const decryptedId = crypto.AES.decrypt(req.cookies.userId, process.env.SECRET)
+            const decryptedString = decryptedId.toString(crypto.enc.Utf8) 
             //the user is logged in, lets find them in the db 
-            const user = await db.user.findByPk(req.cookies.userId)
+            const user = await db.user.findByPk(decryptedString)
             //mount the logged in user on the res.locals 
             res.locals.user = user
         } else {
@@ -32,6 +36,7 @@ app.use(async (req,res,next) => {
         next() 
     } catch(error){
         console.log('error in auth middleware: 🥲', error)
+        //explictly set user to null if there is error
         next() //go to the next thing
     }
 })

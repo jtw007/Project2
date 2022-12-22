@@ -30,7 +30,7 @@ const hashedPassword = bcrypt.hashSync(userPassword, 12)
 console.log(hashedPassword) 
 
 //COMPARE a string to our hash (user login)
-// console.log(bcrypt.compareSync(userPassword, hashedPassword))
+console.log(bcrypt.compareSync(userPassword, hashedPassword))
 
 
 //node js's built in crypto pack
