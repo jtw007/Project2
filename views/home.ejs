@@ -1,5 +1,12 @@
 <%- include('partials/header.ejs', { user }) %> 
 
-<h2>Welcome home, user</h2>
+<h2>Search for a recipe</h2>
+<p>Include one of the following parameters:</p>
+<!-- <p>name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p> -->
+<p>ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka,lemon juice.</p>
+
+<% results.forEach(function(cocktail){%>
+    <p> <%= cocktail.name %> </p>
+<%})%>
 
 <%- include('partials/footer.ejs') %>

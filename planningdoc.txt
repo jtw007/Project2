@@ -3,6 +3,7 @@ ADD:
 
 Home page 
 -needs search bar and submit button 
+-implement a way to only search by ingredients as mvp goal, allow other parameters as stretch goal
 -stretch goal: button that generates a random recipe
 
 

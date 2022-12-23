@@ -1,4 +1,5 @@
 sequelize model:create --name user --attributes email:string,password:string
 
 
----------------
+---------------project models
+sequelize model:create --name cocktails --attributes name:string 

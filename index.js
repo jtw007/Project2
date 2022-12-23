@@ -54,25 +54,26 @@ app.use((req,res,next) => {
 })
 
 //routes and controllers 
-app.get('/', (req,res) => {
-    console.log(res.locals.user)
-    res.render('home.ejs', {
-        user: res.locals.user 
-    })
-})
+// app.get('/', (req,res) => {
+//     console.log(res.locals.user)
+//     res.render('home.ejs', {
+//         user: res.locals.user 
+//     })
+// })
 
+//---ROUTES AND CONTROLLERS-----
 //GET 
 app.get('/', async(req,res) => {
     try {
-        const request = require('request')
-        let name = `tequila`
-        request.get({
-            url: `https://api.api-ninjas.com/v1/cocktail?name=${name}`,
-            headers: {
-                'X-Api-Key': API_KEY
-            }, 
+        let name = 'tequila'
+        const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
+        const config = { headers: { 'X-Api-Key': API_KEY}}
+        const response = await axios.get(url,config)
+        // console.log(response.data)
+        res.render('home.ejs', {
+            user: res.locals.user,
+            results: response.data
         })
-        res.render('home.ejs')
     } catch(error){
         console.log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', error)
         res.status(500).send(':( api error')
