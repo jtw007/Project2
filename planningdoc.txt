@@ -1,0 +1,9 @@
+ADD:
+-a way to link favorites page to home page only after a user is signed in (refactor existing code, in header.ejs)
+
+Home page 
+-needs search bar and submit button 
+-stretch goal: button that generates a random recipe
+
+
+Favorites page

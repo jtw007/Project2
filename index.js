@@ -4,6 +4,8 @@ const express = require('express')
 const cookieParser = require('cookie-parser')
 const db = require('./models')
 const crypto = require('crypto-js')
+const axios = require('axios')
+const API_KEY = process.env.API_KEY
 
 //app config
 const app = express()
@@ -57,6 +59,24 @@ app.get('/', (req,res) => {
     res.render('home.ejs', {
         user: res.locals.user 
     })
+})
+
+//GET 
+app.get('/', async(req,res) => {
+    try {
+        const request = require('request')
+        let name = `tequila`
+        request.get({
+            url: `https://api.api-ninjas.com/v1/cocktail?name=${name}`,
+            headers: {
+                'X-Api-Key': API_KEY
+            }, 
+        })
+        res.render('home.ejs')
+    } catch(error){
+        console.log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', error)
+        res.status(500).send(':( api error')
+    }
 })
 
 app.use('/users', require('./controllers/users'))

@@ -22,7 +22,7 @@ Tired of spending too much money at the bar? Want to save some money and potenti
 I will be using this API https://api-ninjas.com/api/cocktail 
 
 Sample implementation:
-const url = 'https://api.api-ninjas.com/v1/cocktail?name=mezcal mule'
+const url = 'https://api.api-ninjas.com/v1/cocktail?name=mezcal+mule' <br>
 const config = { headers: { X-Api-Key: API_KEY}}
 
 axios.get(url, config)
