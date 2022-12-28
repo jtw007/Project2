@@ -1,12 +1,37 @@
 <%- include('partials/header.ejs', { user }) %> 
 
+<!-- Home page  -->
+
 <h2>Search for a recipe</h2>
 <p>Include one of the following parameters:</p>
 <!-- <p>name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p> -->
 <p>ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka,lemon juice.</p>
+<div class="container-fluid">
+    <form class="d-flex">
+      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+      <button class="btn btn-outline-success" type="submit">Search</button>
+    </form>
+  </div>
 
 <% results.forEach(function(cocktail){%>
-    <p> <%= cocktail.name %> </p>
-<%})%>
+    <div class="well">
+        <p> <%= cocktail.name %> </p>
+        <p> <%= cocktail.ingredients %> </p>
+        <p> <%= cocktail.instructions %> </p>
+        
+        <% if (user) { %>
+        <form method="POST" action="/users/new">
+            <input hidden type="text" name="name" value="<%= cocktail.name %>">
+            <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
+        </form>
+
+        <% } else { %>
+        <form method="POST" action="#">
+            <input hidden type="text" name="name" value="<%= cocktail.name %>">
+            <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
+        </form>
+        <% } %>
+    </div>
+<% }) %>
 
 <%- include('partials/footer.ejs') %>

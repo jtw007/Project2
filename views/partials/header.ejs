@@ -26,33 +26,47 @@
 
         </ul>
     </nav>
+
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
-        <!-- show home whether the user is logged in or not -->
-          <a class="navbar-brand" href="/">Home</a>
+          <a class="navbar-brand" href="/">Home Page</a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
-
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
-              <li class="nav-item">
-                <a class="nav-link active" aria-current="page" href="#">Profile</a>
-              </li>
-              <li class="nav-item">
-                <a class="nav-link" href="#">Logout</a>
-              </li>
+                <% if (user) { %>
+                <!-- show these if user is logged  -->
+                <li class="nav-item">
+                  <a class="nav-link" href="/users/logout">Log Out</a>
+                </li>
+                <li class="nav-item dropdown">
+                  <a class="nav-link dropdown-toggle" href="#" id="navbarDropdown" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                    User Profile
+                  </a>
+                  <ul class="dropdown-menu" aria-labelledby="navbarDropdown">
+                    <li><a class="dropdown-item" href="/users/profile">Profile</a></li>
+                    <li><a class="dropdown-item" href="/users/favorites">Favorites</a></li>
+                  </ul>
+                </li>
+                <% } else { %>
+                <!-- show these if user not logged in  -->
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/users/login">Log In</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link active" aria-current="page" href="/users/new">Sign Up</a>
+                </li>
+                <% } %>
 
             </ul>
-
-            <form class="d-flex">
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
-              <button class="btn btn-outline-success" type="submit">Search</button>
-            </form>
 
           </div>
         </div>
       </nav>
+
+    <!-- title -->
     <h1>Express Auth Boilerplate for Project 2</h1>
 
+    <!-- bootstrap script -->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-kenU1KFdBIe4zVF0s0G1M5b4hcpxyD9F7jL+jjXkk+Q2h455rYXK/7HAuoJl+0I4" crossorigin="anonymous"></script>

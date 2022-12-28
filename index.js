@@ -62,12 +62,12 @@ app.use((req,res,next) => {
 // })
 
 //---ROUTES AND CONTROLLERS-----
-//GET 
+//GET data from API 
 app.get('/', async(req,res) => {
     try {
         let name = 'tequila'
         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
-        const config = { headers: { 'X-Api-Key': API_KEY}}
+        const config = { headers: { 'X-Api-Key': API_KEY}} 
         const response = await axios.get(url,config)
         // console.log(response.data)
         res.render('home.ejs', {
@@ -80,7 +80,11 @@ app.get('/', async(req,res) => {
     }
 })
 
+app.get('/')
+
+//Imports 
 app.use('/users', require('./controllers/users'))
+// app.use('/users', require('./routes/cocktails'))
 
 //listening on a port
 app.listen(PORT, () => {
