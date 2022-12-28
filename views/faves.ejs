@@ -1,0 +1,20 @@
+<!-- Favorite cocktails page -->
+<%- include('./partials/header', { user }) %>
+<div class="container">
+    <h1 class="text-center">Favorite Cocktails</h1>
+    <p class="text-center">
+      <a href="/">Back to Homepage</a>
+    </p>
+    
+    <% favedResults.forEach(function(cocktail) {%>
+      <div class="well">
+        <p> <%= cocktail.name %> </p>
+        <p> <%= cocktail.ingredients %> </p>
+        <p> <%= cocktail.instructions %> </p>
+      </div>
+    <%})%>
+
+
+  </div>
+
+  <%- include('partials/footer.ejs') %>

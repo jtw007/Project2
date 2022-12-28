@@ -18,9 +18,9 @@
         <p> <%= cocktail.name %> </p>
         <p> <%= cocktail.ingredients %> </p>
         <p> <%= cocktail.instructions %> </p>
-        
+
         <% if (user) { %>
-        <form method="POST" action="/users/new">
+        <form method="POST" action="/users/favorites">
             <input hidden type="text" name="name" value="<%= cocktail.name %>">
             <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
         </form>
