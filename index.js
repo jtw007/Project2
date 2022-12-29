@@ -80,11 +80,11 @@ app.get('/', async(req,res) => {
     }
 })
 
-app.get('/')
+
 
 //Imports 
 app.use('/users', require('./controllers/users'))
-app.use('/users', require('./routes/cocktails'))
+
 
 //listening on a port
 app.listen(PORT, () => {

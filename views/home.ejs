@@ -7,27 +7,29 @@
 <!-- <p>name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p> -->
 <p>ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka,lemon juice.</p>
 <div class="container-fluid">
-    <form class="d-flex">
-      <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+    <form class="d-flex" action="/">
+      <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
   </div>
 
 <% results.forEach(function(cocktail){%>
     <div class="well">
-        <p> <%= cocktail.name %> </p>
+        <h3> <%= cocktail.name %> </h3>
         <p> <%= cocktail.ingredients %> </p>
         <p> <%= cocktail.instructions %> </p>
 
         <% if (user) { %>
         <form method="POST" action="/users/favorites">
             <input hidden type="text" name="name" value="<%= cocktail.name %>">
+            <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
+            <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
             <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
         </form>
 
         <% } else { %>
         <form method="POST" action="#">
-            <input hidden type="text" name="name" value="<%= cocktail.name %>">
+            <input hidden type="text" name="name" value="#">
             <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
         </form>
         <% } %>

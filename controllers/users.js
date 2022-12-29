@@ -107,6 +107,41 @@ router.get('/profile', (req, res) => {
         })
     }
 })
+// ---- Favorite routes ----
+//GET /cocktail - return a page with favorited cocktails
+router.get('/favorites', async(req,res) => {
+    try{
+        // READ function to find all favorited cocktails
+        const faveCocktails = await db.favorite.findAll()
+        res.render('users/faves', {
+            favedResults: faveCocktails
+        })
+    }catch(error){
+        console.log(error.message)
+        res.status(500).send(':( API error')
+    }
+})
+
+//POST /cocktail - receive the name of the cocktail and add it to database
+router.post('/favorites', async (req, res) => {
+    // console.log(req.body.name)
+    try{
+        console.log(req.body.name)
+        await db.favorite.findOrCreate({
+            where: {
+                name: req.body.name,
+                ingredients: req.body.ingredients,
+                instructions: req.body.instructions 
+            }
+    })
+    res.redirect(req.get('referer'))    
+    } catch(error){
+        console.log(error.message)
+        res.status(500).send('API error')
+    }
+})
+
+
 
 //export the router
 module.exports = router 
