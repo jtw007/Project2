@@ -56,6 +56,7 @@ As a user, I want to be able to:
 
 ## Stretch Goals
 * Use CSS properties to make the app look more visually appealing 
+* render results to a results page instead of on the home page
 * add an ability for logged in users to edit and customize the recipes they favorite and only after the users favorite the recipe
 * add ability to edit or delete comments 
 

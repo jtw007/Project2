@@ -107,8 +107,29 @@ router.get('/profile', (req, res) => {
         })
     }
 })
-// ---- Favorite routes ----
-//GET /cocktail - return a page with favorited cocktails
+
+// ---- Favorites routes ----
+
+//POST user/faves - CREATE receive the name of the cocktail and add it to database
+router.post('/favorites', async (req, res) => {
+    // console.log(req.body.name)
+    try{
+        // console.log(req.body.name)
+        await db.favorite.findOrCreate({
+            where: {
+                name: req.body.name,
+                ingredients: req.body.ingredients,
+                instructions: req.body.instructions 
+            }
+        })
+        res.redirect(req.get('referer'))    
+    } catch(error) {
+        console.log(error.message)
+        res.status(500).send('Server error :(')
+    }
+})
+
+//GET user/faves - READ return a page with favorited cocktails
 router.get('/favorites', async(req,res) => {
     try{
         // READ function to find all favorited cocktails
@@ -116,32 +137,35 @@ router.get('/favorites', async(req,res) => {
         res.render('users/faves', {
             favedResults: faveCocktails
         })
-    }catch(error){
+    } catch(error) {
         console.log(error.message)
-        res.status(500).send(':( API error')
+        res.status(500).send(':( Server error')
     }
 })
+//GET user/faves - UPDATE 
+// :( no update function yet 
 
-//POST /cocktail - receive the name of the cocktail and add it to database
-router.post('/favorites', async (req, res) => {
-    // console.log(req.body.name)
+//DELETE user/faves - removes a favorite from the favorites list 
+router.delete('/favorites/:index', async (req,res) => {
     try{
-        console.log(req.body.name)
-        await db.favorite.findOrCreate({
-            where: {
-                name: req.body.name,
-                ingredients: req.body.ingredients,
-                instructions: req.body.instructions 
-            }
-    })
-    res.redirect(req.get('referer'))    
-    } catch(error){
+        //remove the cocktail recipe indicated by the req.params from array
+        const deleteFave = await db.favorite.destroy({
+            where: {},
+            truncate:true
+        })
+        const cocktailIndex = Number(req.params.index)
+        // deleteFave.splice(cocktailIndex, 1)
+        // res.render('user/faves', {
+        //     deleteFave: req.params.idx
+        // })
+        // console.log(cocktailIndex)
+        //redirect 
+        res.redirect(req.get('referer'))  
+    } catch(error) {
         console.log(error.message)
-        res.status(500).send('API error')
+        res.status(500).send('Server error :(')
     }
 })
-
-
 
 //export the router
 module.exports = router 

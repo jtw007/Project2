@@ -7,11 +7,11 @@
 <!-- <p>name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p> -->
 <p>ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka,lemon juice.</p>
 <div class="container-fluid">
-    <form class="d-flex" action="/">
-      <input class="form-control me-2" name="search" type="search" placeholder="Search" aria-label="Search">
+    <form class="d-flex" method="GET" action="/">
+      <input class="form-control me-2" name="search" type="search" placeholder="Search for a recipe" aria-label="Search">
       <button class="btn btn-outline-success" type="submit">Search</button>
     </form>
-  </div>
+</div>
 
 <% results.forEach(function(cocktail){%>
     <div class="well">
@@ -28,7 +28,7 @@
         </form>
 
         <% } else { %>
-        <form method="POST" action="#">
+        <form method="POST" action="/users/new">
             <input hidden type="text" name="name" value="#">
             <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
         </form>

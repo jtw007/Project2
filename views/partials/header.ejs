@@ -8,24 +8,23 @@
     <title>Project 2</title>
 </head>
 <body>
-    <nav>
+    <!-- <nav> -->
         
-        <ul>
+        <!-- <ul> -->
             <!-- show home whether the user is logged in or not -->
-            <li><a href='/'>Home</a></li>
-            <% if (user) { %>
+            <!-- <li><a href='/'>Home</a></li>  -->
+            <% /*if (user) { */%>
                 <!-- show these if user is logged  -->
-                <li><a href='/users/profile'>Profile</a></li>
-                <li><a href='/users/logout'>Logout</a></li>
-            <% } else { %>
+                <!-- <li><a href='/users/profile'>Profile</a></li> -->
+                <!-- <li><a href='/users/logout'>Logout</a></li> -->
+            <%/* } else { */%>
                 <!-- show these if user not logged in  -->
-                <li><a href='/users/new'>Sign up</a></li>
-                <li><a href='/users/login'>Login</a></li>
-            <% } %>
-
-
-        </ul>
-    </nav>
+                <!-- <li><a href='/users/new'>Sign up</a></li> -->
+                <!-- <li><a href='/users/login'>Login</a></li> -->
+            <% /*} */%>
+        <!-- </ul> -->
+        
+    <!-- </nav> -->
 
     <nav class="navbar navbar-expand-lg navbar-light bg-light">
         <div class="container-fluid">
@@ -33,6 +32,7 @@
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
           </button>
+
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0">
                 <% if (user) { %>

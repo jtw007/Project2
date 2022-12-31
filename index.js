@@ -6,6 +6,7 @@ const db = require('./models')
 const crypto = require('crypto-js')
 const axios = require('axios')
 const API_KEY = process.env.API_KEY
+const methodOverride = require('method-override')
 
 //app config
 const app = express()
@@ -15,6 +16,8 @@ app.set('view engine', 'ejs')
 app.use(express.urlencoded({ extended: false }))
 //tell express to parse incoming cookies
 app.use(cookieParser())
+//enable PUTing and DELETEing from HTML5 forms
+app.use(methodOverride('_method'))
 
 //custom auth middleware that checks the cookies for a user id
 //if found, look up the user in the database(db)
@@ -53,23 +56,15 @@ app.use((req,res,next) => {
     next()
 })
 
-//routes and controllers 
-// app.get('/', (req,res) => {
-//     console.log(res.locals.user)
-//     res.render('home.ejs', {
-//         user: res.locals.user 
-//     })
-// })
 
 //---ROUTES AND CONTROLLERS-----
 //GET data from API 
 app.get('/', async(req,res) => {
     try {
-        let name = 'tequila'
+        let name = req.query.search
         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
         const config = { headers: { 'X-Api-Key': API_KEY}} 
         const response = await axios.get(url,config)
-        // console.log(response.data)
         res.render('home.ejs', {
             user: res.locals.user,
             results: response.data
@@ -80,7 +75,20 @@ app.get('/', async(req,res) => {
     }
 })
 
-
+// app.get('/results', async (req, res) => {
+//     try{
+//         let name = req.query.Search
+//         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
+//         const config = { headers: { 'X-Api-Key': API_KEY}} 
+//         const response = await axios.get(url,config)
+//         res.render('results.ejs', {
+//             results: response.data
+//         })
+//     } catch(error) {
+//         console.log(error.message)
+//         res.status(500).send('API error :(')
+//     }
+// })
 
 //Imports 
 app.use('/users', require('./controllers/users'))

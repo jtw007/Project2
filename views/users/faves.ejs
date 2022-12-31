@@ -6,17 +6,22 @@
     <h1 class="text-center">Favorite Cocktails</h1>
     <p class="text-center">
       <a href="/">Back to Homepage</a>
+      <!-- <a href="/results">Back to Results</a> -->
     </p>
     
-    <% favedResults.forEach(function(cocktail) {%>
-      <div class="well">
-        <p> <%= cocktail.name %> </p>
-        <p> <%= cocktail.ingredients %> </p>
-        <p> <%= cocktail.instructions %> </p>
-      </div>
-    <%})%>
-
-
-  </div>
+    <div class="faves-container">
+      <% favedResults.forEach(function(cocktail, index) {%>
+        <div class="well">
+          <p> <%= cocktail.name %> </p>
+          <p> <%= cocktail.ingredients %> </p>
+          <p> <%= cocktail.instructions %> </p>
+          <!-- delete form to remove cocktail from favorites -->
+          <form method="POST" action="/users/favorites/<%= index %>/?_method=DELETE">
+            <button type="submit">Delete From Favorites</button>
+          </form>
+        </div>
+      <%})%>
+    </div>
+</div>
 
   <%- include('../partials/footer.ejs') %>
