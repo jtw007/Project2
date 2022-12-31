@@ -146,14 +146,17 @@ router.get('/favorites', async(req,res) => {
 // :( no update function yet 
 
 //DELETE user/faves - removes a favorite from the favorites list 
-router.delete('/favorites/:index', async (req,res) => {
+router.delete('/favorites/:id', async (req,res) => {
     try{
         //remove the cocktail recipe indicated by the req.params from array
         const deleteFave = await db.favorite.destroy({
-            where: {},
+            where: {
+                name: req.params.name
+            },
             truncate:true
         })
-        const cocktailIndex = Number(req.params.index)
+        // res.json(deleteFave)
+        // const cocktailIndex = Number(req.params.index)
         // deleteFave.splice(cocktailIndex, 1)
         // res.render('user/faves', {
         //     deleteFave: req.params.idx
