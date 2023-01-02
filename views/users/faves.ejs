@@ -10,13 +10,13 @@
     </p>
     
     <div class="faves-container">
-      <% favedResults.forEach(function(cocktail, id) {%>
+      <% favedResults.forEach(function(cocktail, index) {%>
         <div class="well">
           <p> <%= cocktail.name %> </p>
           <p> <%= cocktail.ingredients %> </p>
           <p> <%= cocktail.instructions %> </p>
           <!-- delete form to remove cocktail from favorites -->
-          <form method="POST" action="/users/favorites/<%= id %>/?_method=DELETE">
+          <form method="POST" action="/users/favorites/<%= cocktail.id %>/?_method=DELETE">
             <button type="submit">Delete From Favorites</button>
           </form>
         </div>

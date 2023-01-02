@@ -108,7 +108,7 @@ router.get('/profile', (req, res) => {
     }
 })
 
-// ---- Favorites routes ----
+// ------ FAVORITES routes start ------
 
 //POST user/faves - CREATE receive the name of the cocktail and add it to database
 router.post('/favorites', async (req, res) => {
@@ -120,6 +120,7 @@ router.post('/favorites', async (req, res) => {
                 name: req.body.name,
                 ingredients: req.body.ingredients,
                 instructions: req.body.instructions 
+                // add userId input from models here?
             }
         })
         res.redirect(req.get('referer'))    
@@ -147,28 +148,23 @@ router.get('/favorites', async(req,res) => {
 
 //DELETE user/faves - removes a favorite from the favorites list 
 router.delete('/favorites/:id', async (req,res) => {
+    console.log(req.params.id)
     try{
         //remove the cocktail recipe indicated by the req.params from array
         const deleteFave = await db.favorite.destroy({
             where: {
-                name: req.params.name
+                id: req.params.id
             },
-            truncate:true
         })
-        // res.json(deleteFave)
-        // const cocktailIndex = Number(req.params.index)
-        // deleteFave.splice(cocktailIndex, 1)
-        // res.render('user/faves', {
-        //     deleteFave: req.params.idx
-        // })
-        // console.log(cocktailIndex)
-        //redirect 
         res.redirect(req.get('referer'))  
     } catch(error) {
         console.log(error.message)
         res.status(500).send('Server error :(')
     }
 })
+
+//----- COMMENTS routes start ------
+
 
 //export the router
 module.exports = router 
