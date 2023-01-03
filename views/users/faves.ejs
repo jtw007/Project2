@@ -5,23 +5,29 @@
 <div class="container">
     <h1 class="text-center">Favorite Cocktails</h1>
     <p class="text-center">
-      <a href="/">Back to Homepage</a>
+      <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
       <!-- <a href="/results">Back to Results</a> -->
     </p>
     
     <div class="faves-container">
-      <% favedResults.forEach(function(cocktail, index) {%>
+      <% favedResults.forEach(function(cocktail) {%>
         <div class="well">
           <p> <%= cocktail.name %> </p>
           <p> <%= cocktail.ingredients %> </p>
           <p> <%= cocktail.instructions %> </p>
           <!-- delete form to remove cocktail from favorites -->
           <form method="POST" action="/users/favorites/<%= cocktail.id %>/?_method=DELETE">
-            <button type="submit">Delete From Favorites</button>
+            <button class="btn btn-primary" type="submit">Delete From Favorites</button>
           </form>
+              <!-- not sure why this method doesn't work -->
+          <!-- <form method="DELETE" action="/users/favorites/<%= cocktail.id %>/?">
+            <button class="btn btn-primary" type="submit">Delete From Favorites</button>
+          </form> -->
+
+          <!-- comments section -->
         </div>
       <%})%>
     </div>
 </div>
 
-  <%- include('../partials/footer.ejs') %>
+<%- include('../partials/footer.ejs') %>

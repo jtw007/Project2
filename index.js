@@ -58,6 +58,7 @@ app.use((req,res,next) => {
 
 
 //---ROUTES AND CONTROLLERS-----
+
 //GET data from API 
 app.get('/', async(req,res) => {
     try {
@@ -75,6 +76,7 @@ app.get('/', async(req,res) => {
     }
 })
 
+    //---render RESULTS PAGE ROUTE----
 // app.get('/results', async (req, res) => {
 //     try{
 //         let name = req.query.Search

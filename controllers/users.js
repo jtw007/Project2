@@ -143,12 +143,13 @@ router.get('/favorites', async(req,res) => {
         res.status(500).send(':( Server error')
     }
 })
+
 //GET user/faves - UPDATE 
 // :( no update function yet 
 
 //DELETE user/faves - removes a favorite from the favorites list 
 router.delete('/favorites/:id', async (req,res) => {
-    console.log(req.params.id)
+    // console.log(`This is the req.params.id: ${req.params.id}`)
     try{
         //remove the cocktail recipe indicated by the req.params from array
         const deleteFave = await db.favorite.destroy({

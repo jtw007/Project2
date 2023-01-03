@@ -8,3 +8,7 @@ Home page
 
 
 Favorites page
+
+
+----post project reflection---
+-truncate was the issue with the delete button 
