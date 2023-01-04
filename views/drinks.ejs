@@ -7,15 +7,14 @@
       <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
     </p>
 
-    <div class="faves-container">
+    <div class="details-container">
         <div class="well">
           <p> <%= display.name %> </p>
           <p> <%= display.ingredients %> </p>
-          
           <p> <%= display.instructions %> </p>
         </div>
     </div>
-    <form method="POST" action="/drinks/<%= display.id %>/comment">
+    <form method="POST" action="/drinks/<%= display.name %>/comment">
         <label for="name">Username: </label>
         <input id="name" type="text" placeholder="Your Name here..." name="name" required />
 

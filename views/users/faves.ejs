@@ -12,7 +12,7 @@
     <div class="faves-container">
       <% favedResults.forEach(function(cocktail) {%>
         <div class="well">
-          <h3> <%= cocktail.name %> </h3>
+          <h3><a href="/drinks/<%= cocktail.name %>" style="color:gold;"> <%= cocktail.name %> </a></h3>
           <ul> 
             <% cocktail.ingredients.split(',').forEach(ingredient => { %> 
               <li> <%= ingredient %> </li>
