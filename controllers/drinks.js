@@ -6,16 +6,13 @@ const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
 
 //----- COMMENTS routes start ------
-router.get('/', async (req, res) => {
+router.get('/:id', async (req, res) => {
     // res.send('hello this is the details and comments page')
     try{
         const comments = await db.comment.findAll()
-        const faveCocktails = await db.favorite.findAll()
+        const faveCocktails = await db.favorite.findOne()
         res.render('drinks.ejs', {
-            where: {
-                commentContent: comments, 
-                favedResults: faveCocktails
-            }
+            cocktail: faveCocktails    
         })
     } catch(error) {
         console.log(error.message)

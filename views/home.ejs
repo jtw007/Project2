@@ -3,6 +3,7 @@
 <!-- Home page  -->
 
 <h2 class="text-center">Search for a recipe</h2>
+<h4 class="text-center">Please drink responsibly</h4>
 <p class="text-center">Include one of the following parameters:</p>
 <p class="text-center">Name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p>
 <p class="text-center">Ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
@@ -17,7 +18,7 @@
 <% results.forEach(function(cocktail){%>
     <div class="well">
         <form class="" method="GET" action="/drinks">
-            <h3> <a href="/drinks" style="color:gold;"><%= cocktail.name %></a> </h3>
+            <h3> <a href="/drinks/:id" style="color:gold;"><%= cocktail.name %></a> </h3>
         </form>
         
         <p> <%= cocktail.ingredients %> </p>
