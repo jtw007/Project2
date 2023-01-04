@@ -4,8 +4,8 @@
 
 <h2 class="text-center">Search for a recipe</h2>
 <p class="text-center">Include one of the following parameters:</p>
-<p class="text-center">name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p>
-<p class="text-center">ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
+<p class="text-center">Name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p>
+<p class="text-center">Ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
 
 <div class="container-fluid">
     <form class="d-flex" method="GET" action="/">
@@ -16,7 +16,10 @@
 
 <% results.forEach(function(cocktail){%>
     <div class="well">
-        <h3> <%= cocktail.name %> </h3>
+        <form class="" method="GET" action="/drinks">
+            <h3> <a href="/drinks" style="color:gold;"><%= cocktail.name %></a> </h3>
+        </form>
+        
         <p> <%= cocktail.ingredients %> </p>
         <p> <%= cocktail.instructions %> </p>
 
@@ -30,7 +33,9 @@
 
         <% } else { %>
         <form method="POST" action="/users/new">
-            <input hidden type="text" name="name" value="#">
+            <input hidden type="text" name="name" value="<%= cocktail.name %>">
+            <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
+            <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
             <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
         </form>
         <% } %>

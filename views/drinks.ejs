@@ -1,0 +1,37 @@
+<%- include('partials/header.ejs', { user }) %> 
+
+
+<div class="container">
+    <h1 class="text-center">Comments</h1>
+    <p class="text-center">
+      <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
+      <!-- <a href="/results">Back to Results</a> -->
+    </p>
+
+    <div class="faves-container">
+      <% favedResults.forEach(function(cocktail) {%>
+        <div class="well">
+          <p> <%= cocktail.name %> </p>
+          <ul> 
+            <% cocktail.ingredients.split(',').forEach(ingredient => { %> 
+              <li> <%= ingredient %> </li>
+              <% }) %> 
+          </ul>
+          <p> <%= cocktail.instructions %> </p>
+        </div>
+      <%})%>
+    </div>
+    <form method="POST" action="/drinks/<%= cocktail.id %>/comment">
+        <label for="name">Name: </label>
+        <input id="name" type="text" placeholder="Your Name here..." name="name" required />
+
+        <label for="content">Comment:</label>
+        <input id="content" type="text" placeholder="Enter Your Comment..." name="content" required />
+
+        <button type="submit">Add Comment</button>
+      </form>
+</div>
+
+
+
+<%- include('partials/footer.ejs') %>

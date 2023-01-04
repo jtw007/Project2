@@ -8,12 +8,16 @@
       <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
       <!-- <a href="/results">Back to Results</a> -->
     </p>
-    
+
     <div class="faves-container">
       <% favedResults.forEach(function(cocktail) {%>
         <div class="well">
-          <p> <%= cocktail.name %> </p>
-          <p> <%= cocktail.ingredients %> </p>
+          <h3> <%= cocktail.name %> </h3>
+          <ul> 
+            <% cocktail.ingredients.split(',').forEach(ingredient => { %> 
+              <li> <%= ingredient %> </li>
+              <% }) %> 
+          </ul>
           <p> <%= cocktail.instructions %> </p>
           <!-- delete form to remove cocktail from favorites -->
           <form method="POST" action="/users/favorites/<%= cocktail.id %>/?_method=DELETE">
@@ -23,8 +27,8 @@
           <!-- <form method="DELETE" action="/users/favorites/<%= cocktail.id %>/?">
             <button class="btn btn-primary" type="submit">Delete From Favorites</button>
           </form> -->
-
-          <!-- comments section -->
+          
+          <!-- button that directs user to comment section for individual drink -->
         </div>
       <%})%>
     </div>

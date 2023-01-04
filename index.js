@@ -79,7 +79,7 @@ app.get('/', async(req,res) => {
     //---render RESULTS PAGE ROUTE----
 // app.get('/results', async (req, res) => {
 //     try{
-//         let name = req.query.Search
+//         let name = req.query.search
 //         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
 //         const config = { headers: { 'X-Api-Key': API_KEY}} 
 //         const response = await axios.get(url,config)
@@ -88,12 +88,13 @@ app.get('/', async(req,res) => {
 //         })
 //     } catch(error) {
 //         console.log(error.message)
-//         res.status(500).send('API error :(')
+//         res.status(500).send('Results API error')
 //     }
 // })
 
 //Imports 
 app.use('/users', require('./controllers/users'))
+app.use('/drinks', require('./controllers/drinks'))
 
 
 //listening on a port

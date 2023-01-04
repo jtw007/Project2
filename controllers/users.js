@@ -135,7 +135,9 @@ router.get('/favorites', async(req,res) => {
     try{
         // READ function to find all favorited cocktails
         const faveCocktails = await db.favorite.findAll()
-        res.render('users/faves', {
+        let ingredients = faveCocktails[0].dataValues.ingredients 
+        // console.log(ingredients)
+        res.render('users/faves', { 
             favedResults: faveCocktails
         })
     } catch(error) {
@@ -164,7 +166,7 @@ router.delete('/favorites/:id', async (req,res) => {
     }
 })
 
-//----- COMMENTS routes start ------
+
 
 
 //export the router

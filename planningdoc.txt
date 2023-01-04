@@ -9,6 +9,7 @@ Home page
 
 Favorites page
 
+localhost:3000/drinks/:id 
 
 ----post project reflection---
 -truncate was the issue with the delete button 
