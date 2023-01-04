@@ -119,14 +119,14 @@ router.post('/favorites', async (req, res) => {
             where: {
                 name: req.body.name,
                 ingredients: req.body.ingredients,
-                instructions: req.body.instructions 
-                // add userId input from models here?
+                instructions: req.body.instructions, 
+                // userId: req.cookies.userId 
             }
         })
         res.redirect(req.get('referer'))    
     } catch(error) {
         console.log(error.message)
-        res.status(500).send('Server error :(')
+        res.status(500).send('Server error 📬')
     }
 })
 
@@ -135,7 +135,7 @@ router.get('/favorites', async(req,res) => {
     try{
         // READ function to find all favorited cocktails
         const faveCocktails = await db.favorite.findAll()
-        let ingredients = faveCocktails[0].dataValues.ingredients 
+        // let ingredients = faveCocktails[0].dataValues.ingredients 
         // console.log(ingredients)
         res.render('users/faves', { 
             favedResults: faveCocktails
@@ -162,7 +162,7 @@ router.delete('/favorites/:id', async (req,res) => {
         res.redirect(req.get('referer'))  
     } catch(error) {
         console.log(error.message)
-        res.status(500).send('Server error :(')
+        res.status(500).send('Server error 🥲')
     }
 })
 

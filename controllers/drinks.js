@@ -4,28 +4,43 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+const axios = require('axios')
+const API_KEY = process.env.API_KEY
 
 //----- COMMENTS routes start ------
 router.get('/:id', async (req, res) => {
     // res.send('hello this is the details and comments page')
+    // db.comment.findOne({
+    //     where: {id: req.params.id},
+    //     include: [db.user, db.comment]
+    // })
     try{
-        const comments = await db.comment.findAll()
-        const faveCocktails = await db.favorite.findOne()
+        // const comments = await db.comment.findAll()
+        let name = req.body.name
+        let id = req.params.id
+        const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}/drinks/:${id}`
+        const config = { headers: { 'X-Api-Key': API_KEY}} 
+        const details = await axios.get(url,config)
         res.render('drinks.ejs', {
-            cocktail: faveCocktails    
+            display: details.data     
         })
+        console.log(details)
     } catch(error) {
         console.log(error.message)
         res.status(500).send('Server Error 💬')
     }
 })
 
-router.post('/:id', async (req, res) => {
+router.post('/:id/comment', async (req, res) => {
     try{
-        await db.comment.findOrCreate()
+        const userComment = await db.comment.create({
+            userName: req.body.name,
+            comment: req.body.content 
+        })
+        
     }catch(error){
         console.log(error.message)
-        res.status(500).send('💬 Server Error ')
+        res.status(500).send('💬 Comments Posting Server Error')
     }
 })
 

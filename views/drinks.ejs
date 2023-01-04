@@ -9,16 +9,13 @@
 
     <div class="faves-container">
         <div class="well">
-          <p> <%= cocktail.name %> </p>
-          <ul> 
-            <% cocktail.ingredients.split(',').forEach(ingredient => { %> 
-              <li> <%= ingredient %> </li>
-              <% }) %> 
-          </ul>
-          <p> <%= cocktail.instructions %> </p>
+          <p> <%= display.name %> </p>
+          <p> <%= display.ingredients %> </p>
+          
+          <p> <%= display.instructions %> </p>
         </div>
     </div>
-    <form method="POST" action="/drinks/<%= cocktail.id %>/comment">
+    <form method="POST" action="/drinks/<%= display.id %>/comment">
         <label for="name">Username: </label>
         <input id="name" type="text" placeholder="Your Name here..." name="name" required />
 
@@ -27,6 +24,9 @@
 
         <button type="submit">Add Comment</button>
       </form>
+    <div>
+        
+    </div>
 </div>
 
 
