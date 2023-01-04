@@ -18,7 +18,7 @@
 <% results.forEach(function(cocktail){%>
     <div class="well">
         <form class="" method="GET" action="/drinks">
-            <h3> <a href="/drinks/:id" style="color:gold;"><%= cocktail.name %></a> </h3>
+            <h3> <a href="/drinks/<%= cocktail.name %>" style="color:gold;"><%= cocktail.name %></a> </h3>
         </form>
         
         <p> <%= cocktail.ingredients %> </p>

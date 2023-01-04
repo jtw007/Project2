@@ -8,7 +8,7 @@ const axios = require('axios')
 const API_KEY = process.env.API_KEY
 
 //----- COMMENTS routes start ------
-router.get('/:id', async (req, res) => {
+router.get('/:name', async (req, res) => {
     // res.send('hello this is the details and comments page')
     // db.comment.findOne({
     //     where: {id: req.params.id},
@@ -17,7 +17,7 @@ router.get('/:id', async (req, res) => {
     try{
         // const comments = await db.comment.findAll()
         let name = req.body.name
-        let id = req.params.id
+        let id = req.params.name 
         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}/drinks/:${id}`
         const config = { headers: { 'X-Api-Key': API_KEY}} 
         const details = await axios.get(url,config)
