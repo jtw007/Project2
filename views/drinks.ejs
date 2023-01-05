@@ -5,6 +5,9 @@
     <h1 class="text-center">Comments</h1>
     <p class="text-center">
       <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
+      <% if (user) { %>
+      <button class="btn btn-primary"><a href="/users/favorites" style="color:white; text-decoration:none">Back to Favorites</a></button>
+      <% } %>
     </p>
 
     <div class="details-container">
@@ -14,7 +17,8 @@
           <p> <%= display.instructions %> </p>
         </div>
     </div>
-    <form method="POST" action="/drinks/<%= display.name %>/comment">
+
+    <form method="POST" action="/drinks/<%= display.name %>">
         <label for="name">Username: </label>
         <input id="name" type="text" placeholder="Your Name here..." name="name" required />
 
@@ -22,10 +26,15 @@
         <input id="content" type="text" placeholder="Enter Your Comment..." name="content" required />
 
         <button type="submit">Add Comment</button>
-      </form>
+    </form>
+
     <div>
-        
+        <% comments.forEach(function(comment) {%>
+            <p> <%= comment.userName %> </p>
+            <p> <%= comment.comment %> </p>
+        <% })%>
     </div>
+    
 </div>
 
 

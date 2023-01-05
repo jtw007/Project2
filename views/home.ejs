@@ -1,45 +1,61 @@
 <%- include('partials/header.ejs', { user }) %> 
 
 <!-- Home page  -->
+<div class="card mx-auto" style="width: 50rem;">
+    <div class="card-body">
+        <h2 class="card-title text-center">Search for a recipe</h5>
+        <h4 class="card-subtitle mb-2 text-muted text-center">Please drink responsibly</h4>
+        <p class="card-text">Include one of the following parameters: </p>
+        <p class="card-text">Name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita) </p>
+        <p class="card-text">Ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
+            
+        <div class="container-fluid">
+            <form class="d-flex" method="GET" action="/">
+                <input class="form-control me-2" name="search" type="search" placeholder="Search for a recipe" aria-label="Search">
+                <button class="btn btn-outline-success" type="submit">Search</button>
+            </form>
+        </div>
 
-<h2 class="text-center">Search for a recipe</h2>
-<h4 class="text-center">Please drink responsibly</h4>
-<p class="text-center">Include one of the following parameters:</p>
-<p class="text-center">Name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita)</p>
-<p class="text-center">Ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
-
-<div class="container-fluid">
-    <form class="d-flex" method="GET" action="/">
-      <input class="form-control me-2" name="search" type="search" placeholder="Search for a recipe" aria-label="Search">
-      <button class="btn btn-outline-success" type="submit">Search</button>
-    </form>
+    </div>
 </div>
 
+
+
+
 <% results.forEach(function(cocktail){%>
-    <div class="well">
-        <form class="" method="GET" action="/drinks">
-            <h3> <a href="/drinks/<%= cocktail.name %>" style="color:gold;"><%= cocktail.name %></a> </h3>
-        </form>
-        
-        <p> <%= cocktail.ingredients %> </p>
-        <p> <%= cocktail.instructions %> </p>
+    <!-- <div class="home-card border-primary mb-3" style="width: 18rem"> -->
+    <div class="card border-primary mb-3" style="width: 18rem;">
+        <!-- <span class="border border-primary"> -->
+            <div class="card-body">
+                <form method="GET" action="/drinks">
+                    <h3 class="card-title"><a href="/drinks/<%= cocktail.name %>" style="color:gold;"><%= cocktail.name %></a></h3>
+                </form>
+            </div>
+            
+                <ul class="list-group list-group-flush">
+                    <li class="list-group-item"><%= cocktail.ingredients %> </li>
+                    <li class="list-group-item"><%= cocktail.instructions %></li>
+                </ul>
 
-        <% if (user) { %>
-        <form method="POST" action="/users/favorites">
-            <input hidden type="text" name="name" value="<%= cocktail.name %>">
-            <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
-            <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
-            <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
-        </form>
+            <div class="card-body">
+                <% if (user) { %>
+                <form method="POST" action="/users/favorites">
+                    <input hidden type="text" name="name" value="<%= cocktail.name %>">
+                    <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
+                    <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
+                    <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
+                </form>
 
-        <% } else { %>
-        <form method="POST" action="/users/new">
-            <input hidden type="text" name="name" value="<%= cocktail.name %>">
-            <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
-            <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
-            <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
-        </form>
-        <% } %>
+                <% } else { %>
+                <form method="POST" action="/users/new">
+                    <input hidden type="text" name="name" value="<%= cocktail.name %>">
+                    <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
+                    <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
+                    <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
+                </form>
+                <% } %>
+            </div>
+        <!-- </span> -->
     </div>
 <% }) %>
 

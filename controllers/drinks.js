@@ -12,13 +12,17 @@ router.get('/:name', async (req, res) => {
     // res.send('hello this is the details and comments page')
     try{
         // const comments = await db.comment.findAll()
-        let name = req.body.name
-        let id = req.params.name 
-        const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}/drinks/:${id}`
+        let name = req.params.name       
+        const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
         const config = { headers: { 'X-Api-Key': API_KEY}} 
         const response = await axios.get(url,config)
+        console.log(`This is the drinks response ${response.data}`)
+        // create findall and save as a variable
+        const commentId = await db.comment.findAll()
         res.render('drinks.ejs', {
-            display: response.data     
+            display: response.data[0],
+            // add findall variable here 
+            comments: commentId       
         })
     } catch(error) {
         console.log(error.message)
@@ -26,14 +30,15 @@ router.get('/:name', async (req, res) => {
     }
 })
 
-router.post('/:name/comment', async (req, res) => {
+router.post('/:name', async (req, res) => {
     try{
         const userComment = await db.comment.create({
+            // save name relations to comment
             userName: req.body.name,
             comment: req.body.content,
-             
+            userId: res.locals.user.id,
         })
-        await userComment.createComment(req.body)
+        res.redirect(req.get('referer'))  
     }catch(error){
         console.log(error.message)
         res.status(500).send('💬 Comments Posting Server Error')

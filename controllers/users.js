@@ -120,7 +120,7 @@ router.post('/favorites', async (req, res) => {
                 name: req.body.name,
                 ingredients: req.body.ingredients,
                 instructions: req.body.instructions, 
-                // userId: req.cookies.userId 
+                userId: res.locals.user.id
             }
         })
         res.redirect(req.get('referer'))    
