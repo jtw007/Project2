@@ -18,7 +18,7 @@ module.exports = (sequelize, DataTypes) => {
     userName: DataTypes.STRING,
     comment: DataTypes.STRING,
     userId: DataTypes.INTEGER,
-    favoriteId: DataTypes.INTEGER
+    drinkName: DataTypes.STRING
   }, {
     sequelize,
     modelName: 'comment',

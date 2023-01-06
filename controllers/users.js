@@ -113,7 +113,8 @@ router.get('/profile', async (req, res) => {
 //PUT /users/profile -- allows user to UPDATE password
 router.put('/:id', async (req, res) => {
     try {
-        const changePassword = await db.user.update({password: req.body.password}, {
+        const changePassword = await db.user.update(
+            {password: bcrypt.hashSync(req.body.password, 12)}, {
             where: {
                 email: req.body.email
             }
@@ -128,6 +129,7 @@ router.put('/:id', async (req, res) => {
 
 // --------- FAVORITES routes start ------------
 //create a favorites controller file
+
 //POST user/faves - CREATE receive the name of the cocktail and add it to database
 router.post('/favorites', async (req, res) => {
     // console.log(req.body.name)

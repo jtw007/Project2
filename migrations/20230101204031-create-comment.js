@@ -18,8 +18,8 @@ module.exports = {
       userId: {
         type: Sequelize.INTEGER
       },
-      favoriteId: {
-        type: Sequelize.INTEGER
+      drinkName: {
+        type: Sequelize.STRING
       },
       createdAt: {
         allowNull: false,
