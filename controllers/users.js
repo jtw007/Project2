@@ -4,6 +4,7 @@ const db = require('../models')
 const router = express.Router()
 const crypto = require('crypto-js')
 const bcrypt = require('bcrypt')
+// const methodOverride = require('method-override')
 
 //mount our routes on the router
 
@@ -97,19 +98,36 @@ router.get('/logout', (req,res) => {
 })
 
 //GET /users/profile -- show the user their profile page
-router.get('/profile', (req, res) => {
+router.get('/profile', async (req, res) => {
     //if the user is not logged in -- not allowed to be here
     if (!res.locals.user) {
         res.redirect('/user/login?message=You must be logged in to view this page')
     } else {
+        // await db.users.findByPK()
         res.render('users/profile.ejs', {
             user: res.locals.user
         })
     }
 })
 
-// ------ FAVORITES routes start ------
+//PUT /users/profile -- allows user to UPDATE password
+router.put('/:id', async (req, res) => {
+    try {
+        const changePassword = await db.user.update({password: req.body.password}, {
+            where: {
+                email: req.body.email
+            }
+        })
+        res.redirect('/') 
+    } catch(error) {
+        console.log(error.message)
+        res.status(500).send('Server error on UPDATE path 📺')
+    }
+})
 
+
+// --------- FAVORITES routes start ------------
+//create a favorites controller file
 //POST user/faves - CREATE receive the name of the cocktail and add it to database
 router.post('/favorites', async (req, res) => {
     // console.log(req.body.name)
@@ -123,7 +141,7 @@ router.post('/favorites', async (req, res) => {
                 userId: res.locals.user.id
             }
         })
-        res.redirect(req.get('referer'))    
+        res.redirect(req.get('referer'))  
     } catch(error) {
         console.log(error.message)
         res.status(500).send('Server error 📬')

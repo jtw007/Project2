@@ -20,10 +20,10 @@
 
     <form method="POST" action="/drinks/<%= display.name %>">
         <label for="name">Username: </label>
-        <input id="name" type="text" placeholder="Your Name here..." name="name" required />
+        <input id="name" type="text" autocomplete="off" placeholder="Your Name here..." name="name" required />
 
         <label for="content">Comment:</label>
-        <input id="content" type="text" placeholder="Enter Your Comment..." name="content" required />
+        <input id="content" type="text" autocomplete="off" placeholder="Enter Your Comment..." name="content" required />
 
         <button type="submit">Add Comment</button>
     </form>

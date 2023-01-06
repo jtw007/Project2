@@ -66,13 +66,25 @@ app.get('/', async(req,res) => {
         const url = `https://api.api-ninjas.com/v1/cocktail?name=${name}`
         const config = { headers: { 'X-Api-Key': API_KEY}} 
         const response = await axios.get(url,config)
+        // console.log(Object.keys(response.data).length + `🥲`)
+        // console.log(response.data)
+        if (typeof response.data !== Object) {
+            res.render('home.ejs', {
+                user: res.locals.user,
+                results: response.data
+            })
+        } else {
+            res.send('Invalid search parameters') 
+        }
+        
+    } catch(error){
+        console.log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', error.response)
         res.render('home.ejs', {
             user: res.locals.user,
-            results: response.data
+            results: []
         })
-    } catch(error){
-        console.log('🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥🔥', error)
-        res.status(500).send(':( api error')
+        // res.status(500).send('API error')
+        // res.send(error.response)
     }
 })
 
