@@ -10,23 +10,29 @@
       <% } %>
     </p>
 
-    <div class="details-container">
-        <div class="well">
-          <p> <%= display.name %> </p>
-          <p> <%= display.ingredients %> </p>
-          <p> <%= display.instructions %> </p>
+    <div class="d-flex flex-row flex-wrap justify-content-center justify-content-evenly">
+        <div class="card border-primary mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
+            <h3 class="card-title h-10 d-inline-block" style="color:rgb(47, 101, 207);"><%= display.name.toUpperCase() %></h3>
+            <ul class="list-group list-group-flush">
+                <li class="list-group-item fs-4">Ingredients: </li>
+                <li class="list-group-item"><%= display.ingredients %> </li>
+                <li class="list-group-item fs-4">Instructions: </li>
+                <li class="list-group-item"><%= display.instructions %></li>
+            </ul>
         </div>
     </div>
 
-    <form method="POST" action="/drinks/<%= display.name %>">
-        <label for="name">Username: </label>
-        <input id="name" type="text" autocomplete="off" placeholder="Your Name here..." name="name" required />
+    <ul class="list-group list-group-flush">
+        <form method="POST" action="/drinks/<%= display.name %>">
+            <label for="name"><li class="list-group-item">Username:</li> </label>
+            <input id="name" type="text" autocomplete="off" placeholder="Your Name here..." name="name" required />
 
-        <label for="content">Comment:</label>
-        <input id="content" type="text" autocomplete="off" placeholder="Enter Your Comment..." name="content" required />
+            <label for="content">Comment:</label>
+            <input id="content" type="text" autocomplete="off" placeholder="Enter Your Comment..." name="content" required />
 
-        <button type="submit">Add Comment</button>
-    </form>
+            <button class="btn btn-primary" type="submit">Add Comment</button>
+        </form>
+    </ul>
 
     <div>
         <% comments.forEach(function(comment) {%>
