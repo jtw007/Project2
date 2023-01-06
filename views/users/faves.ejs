@@ -8,21 +8,28 @@
       <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
       <!-- <a href="/results">Back to Results</a> -->
     </p>
+</div>
 
-    <div class="faves-container">
+    <div class="d-flex flex-row flex-wrap justify-content-center justify-content-evenly">
       <% favedResults.forEach(function(cocktail) {%>
-        <div class="well">
-          <h3><a href="/drinks/<%= cocktail.name %>" style="color:gold;"> <%= cocktail.name %> </a></h3>
-          <ul> 
+        <div class="card border-primary mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
+
+          <h3 class="card-title h-10 d-inline-block"><a href="/drinks/<%= cocktail.name %>" style="color:rgb(47, 101, 207);"><%= cocktail.name.toUpperCase() %></a></h3>
+          <ul class="list-group list-group-flush"> 
+            <li class="list-group-item fs-4">Ingredients: </li>
             <% cocktail.ingredients.split(',').forEach(ingredient => { %> 
-              <li> <%= ingredient %> </li>
+              <li class="list-group-item"> <%= ingredient %> </li>
               <% }) %> 
+              <li class="list-group-item fs-4">Instructions: </li>
+              <li class="list-group-item"><%= cocktail.instructions %></li>
           </ul>
-          <p> <%= cocktail.instructions %> </p>
+          
           <!-- delete form to remove cocktail from favorites -->
-          <form method="POST" action="/users/favorites/<%= cocktail.id %>/?_method=DELETE">
-            <button class="btn btn-primary" type="submit">Delete From Favorites</button>
-          </form>
+          <div class="card-body d-flex align-items-end justify-content-center">
+            <form method="POST" action="/users/favorites/<%= cocktail.id %>/?_method=DELETE">
+              <button class="btn btn-primary" type="submit">Delete From Favorites</button>
+            </form>
+          </div>
               <!-- not sure why this method doesn't work -->
           <!-- <form method="DELETE" action="/users/favorites/<%= cocktail.id %>/?">
             <button class="btn btn-primary" type="submit">Delete From Favorites</button>
@@ -32,6 +39,6 @@
         </div>
       <%})%>
     </div>
-</div>
+
 
 <%- include('../partials/footer.ejs') %>

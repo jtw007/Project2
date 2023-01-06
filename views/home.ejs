@@ -1,11 +1,11 @@
 <%- include('partials/header.ejs', { user }) %> 
 
 <!-- Home page  -->
-<div class="card mx-auto" style="width: 50rem;">
+<div class="card mx-auto" style="width: 50rem; margin: 50px;">
     <div class="card-body">
         <h2 class="card-title text-center">Search for a recipe</h5>
         <h4 class="card-subtitle mb-2 text-muted text-center">Please drink responsibly</h4>
-        <p class="card-text">Include one of the following parameters: </p>
+        <p class="card-text text-center">Include one of the following search parameters: </p>
         <p class="card-text">Name: name of cocktail. This parameter supports partial matches (e.g. bloody will match bloody mary and bloody margarita) </p>
         <p class="card-text">Ingredients: comma-separated string of ingredients to search. Only cocktails containing all listed ingredients will be returned. For example, to search cocktails containing Vodka and lemon juice, use vodka, lemon juice.</p>
             
@@ -21,24 +21,25 @@
 
 
 
-<div class="vh-min-100 d-flex flex-wrap justify-content-around">
-<% results.forEach(function(cocktail){%>
-    <!-- <div class="home-card border-primary mb-3" style="width: 18rem"> -->
+<div class="d-flex flex-row flex-wrap justify-content-center justify-content-evenly ">
+    <% results.forEach(function(cocktail){%>
     
-        <div class="card border-primary mb-3" style="width: 15vw; height: 40vh d-inline-block;">
-            <!-- <span class="border border-primary"> -->
+        <div class="card border-primary mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
+                
                 <div class="card text-center">
                     <form method="GET" action="/drinks">
-                        <h3 class="card-title"><a href="/drinks/<%= cocktail.name %>" style="color:gold;"><%= cocktail.name %></a></h3>
+                        <h3 class="card-title h-10 d-inline-block"><a href="/drinks/<%= cocktail.name %>" style="color:rgb(47, 101, 207);"><%= cocktail.name.toUpperCase() %></a></h3>
                     </form>
                 </div>
                 
                     <ul class="list-group list-group-flush">
+                        <li class="list-group-item fs-4">Ingredients: </li>
                         <li class="list-group-item"><%= cocktail.ingredients %> </li>
+                        <li class="list-group-item fs-4">Instructions: </li>
                         <li class="list-group-item"><%= cocktail.instructions %></li>
                     </ul>
 
-                <div class="card-body text-center">
+                <div class="card-body d-flex align-items-end justify-content-center">
                     <% if (user) { %>
                     <form method="POST" action="/users/favorites">
                         <input hidden type="text" name="name" value="<%= cocktail.name %>">
@@ -56,9 +57,9 @@
                     </form>
                     <% } %>
                 </div>
-            <!-- </span> -->
-        </div>
-<% }) %>
+
+            </div>
+    <% }) %>
 </div>
 
 <%- include('partials/footer.ejs') %>
