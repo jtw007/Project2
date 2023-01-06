@@ -49,7 +49,7 @@
                     </form>
 
                     <% } else { %>
-                    <form method="POST" action="/users/new">
+                    <form method="GET" action="/users/new">
                         <input hidden type="text" name="name" value="<%= cocktail.name %>">
                         <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
                         <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
