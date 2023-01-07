@@ -1,6 +1,7 @@
 # Project 2
 
 
+
 ## Project description 
 Tired of spending too much money at the bar? Want to save some money and potentially pick up bartending as a hobby? With this new app, you can! This app displays recipes for different cocktails and allows you to favorite cocktails you like. 
 
@@ -60,3 +61,4 @@ As a user, I want to be able to:
 * add an ability for logged in users to edit and customize the recipes they favorite and only after the users favorite the recipe
 * add ability to edit or delete comments 
 
+## Post-Project Reflections
