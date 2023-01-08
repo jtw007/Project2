@@ -12,7 +12,7 @@
         <div class="container-fluid">
             <form class="d-flex" method="GET" action="/">
                 <input class="form-control me-2" autocomplete="off" name="search" type="text" placeholder="Search for a recipe" aria-label="Search">
-                <button class="btn btn-outline-success" type="submit">Search</button>
+                <button class="btn btn-outline-danger" type="submit">Search</button>
             </form>
         </div>
 
@@ -25,19 +25,19 @@
 <div class="d-flex flex-row flex-wrap justify-content-center justify-content-evenly">
     <% results.forEach(function(cocktail){%>
     
-        <div class="card border-primary mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
+        <div class="card border-danger bg-info mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
                 
-                <div class="card text-center">
+                <div class="card text-center bg-info">
                     <form method="GET" action="/drinks">
-                        <h3 class="card-title h-10 d-inline-block"><a href="/drinks/<%= cocktail.name %>" style="color:rgb(47, 101, 207);"><%= cocktail.name.toUpperCase() %></a></h3>
+                        <h3 class="card-title h-10 d-inline-block"><a href="/drinks/<%= cocktail.name %>" style="color:rgb(222, 58, 63);"><%= cocktail.name.toUpperCase() %></a></h3>
                     </form>
                 </div>
                 
                 <ul class="list-group list-group-flush">
-                    <li class="list-group-item fs-4">Ingredients: </li>
-                    <li class="list-group-item"><%= cocktail.ingredients %> </li>
-                    <li class="list-group-item fs-4">Instructions: </li>
-                    <li class="list-group-item"><%= cocktail.instructions %></li>
+                    <li class="list-group-item fs-4 bg-info">Ingredients: </li>
+                    <li class="list-group-item bg-info"><%= cocktail.ingredients %> </li>
+                    <li class="list-group-item fs-4 bg-info">Instructions: </li>
+                    <li class="list-group-item bg-info"><%= cocktail.instructions %></li>
                 </ul>
 
                 <div class="card-body d-flex align-items-end justify-content-center">
@@ -46,7 +46,7 @@
                         <input hidden type="text" name="name" value="<%= cocktail.name %>">
                         <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
                         <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
-                        <button class="btn btn-primary" type="submit">Add to Favorite Cocktails</button>
+                        <button class="btn btn-outline-danger" type="submit">Add to Favorite Cocktails</button>
                     </form>
 
                     <% } else { %>
@@ -54,7 +54,7 @@
                         <input hidden type="text" name="name" value="<%= cocktail.name %>">
                         <input hidden type="text" name="ingredients" value="<%= cocktail.ingredients %>">
                         <input hidden type="text" name="instructions" value="<%= cocktail.instructions %>">
-                        <button class="btn btn-primary" type="submit">Sign up to Add to Your Favorite Cocktails</button>
+                        <button class="btn btn-outline-danger" type="submit">Sign up to Add to Your Favorite Cocktails</button>
                     </form>
                     <% } %>
                 </div>

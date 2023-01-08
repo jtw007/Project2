@@ -4,20 +4,20 @@
 <div class="container">
     <h1 class="text-center">Drink details/Comments</h1>
     <p class="text-center">
-      <button class="btn btn-primary"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
+      <button class="btn btn-outline-danger"><a href="/" style="color:white; text-decoration:none">Back to Homepage</a></button>
       <% if (user) { %>
-      <button class="btn btn-primary"><a href="/users/favorites" style="color:white; text-decoration:none">Back to Favorites</a></button>
+      <button class="btn btn-outline-danger"><a href="/users/favorites" style="color:white; text-decoration:none">Back to Favorites</a></button>
       <% } %>
     </p>
 
     <div class="d-flex flex-row flex-wrap justify-content-center justify-content-evenly">
-        <div class="card border-primary mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
-            <h3 class="card-title h-10 d-inline-block" style="color:rgb(47, 101, 207);"><%= display.name.toUpperCase() %></h3>
+        <div class="card border-primary bg-info mb-3 text-center" style="width: 15vw; height: 50px  ms-5;">
+            <h3 class="card-title h-10 d-inline-block" style="color:rgb(222, 58, 63);"><%= display.name.toUpperCase() %></h3>
             <ul class="list-group list-group-flush">
-                <li class="list-group-item fs-4">Ingredients: </li>
-                <li class="list-group-item"><%= display.ingredients %> </li>
-                <li class="list-group-item fs-4">Instructions: </li>
-                <li class="list-group-item"><%= display.instructions %></li>
+                <li class="list-group-item fs-4 bg-info">Ingredients: </li>
+                <li class="list-group-item bg-info"><%= display.ingredients %> </li>
+                <li class="list-group-item fs-4 bg-info">Instructions: </li>
+                <li class="list-group-item bg-info"><%= display.instructions %></li>
             </ul>
         </div>
     </div>
@@ -29,16 +29,16 @@
                 <form method="POST" action="/drinks/<%= display.name %>">
                     <ul class="list-group list-group-flush">
 
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-info">
                             <label for="name">Username:</label>
                             <input id="name" type="text" autocomplete="off" placeholder="Your Name here..." name="name" required />
                         </li>
-                        <li class="list-group-item">
+                        <li class="list-group-item bg-info">
                             <label for="content">Comment:</label>
                             <input id="content" type="text" autocomplete="off" placeholder="Enter Your Comment..." name="content" required />
                         </li>
-                        <li class="list-group-item d-flex justify-content-center">
-                            <button class="btn btn-primary" type="submit">Add Comment</button>
+                        <li class="list-group-item d-flex justify-content-center bg-info">
+                            <button class="btn btn-outline-danger" type="submit">Add Comment</button>
                         </li>
                     
                     </ul>
@@ -50,9 +50,9 @@
     <div class="d-flex flex-row" style="width: 25rem;">
         <% comments.forEach(function(comment) {%>
             <div class="card text-center">
-                <ul class="list-group list-group-flush">
-                    <li class="list-group-item fw-bolder text-wrap"><%= comment.userName %></li>
-                    <li class="list-group-item text-wrap"><%= comment.comment %></li>
+                <ul class="list-group list-group-flush bg-info">
+                    <li class="list-group-item fw-bolder text-wrap bg-info"><%= comment.userName %></li>
+                    <li class="list-group-item text-wrap bg-info"><%= comment.comment %></li>
                 </ul>
             </div>
         <% })%>
@@ -60,6 +60,6 @@
     
 </div>
 
-
+<div class="container" style="width:100%; height:450px"></div>
 
 <%- include('partials/footer.ejs') %>
