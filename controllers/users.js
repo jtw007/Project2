@@ -126,12 +126,6 @@ router.put('/:id', async (req, res) => {
     }
 })
 
-//GET /users/new -- Sign up button on homepage redirects new users to sign up page
-// router.get('/new', (req,res) => {
-//     res.render('users/new.ejs', {
-//         user: res.locals.user
-//     })
-// })
 
 // --------- FAVORITES routes start ------------
 //create a favorites controller file
@@ -184,7 +178,7 @@ router.delete('/favorites/:id', async (req,res) => {
             where: {
                 id: req.params.id
             },
-        })
+        }) 
         res.redirect(req.get('referer'))  
     } catch(error) {
         console.log(error.message)

@@ -18,8 +18,10 @@ app.use(express.urlencoded({ extended: false }))
 app.use(cookieParser())
 //enable PUTing and DELETEing from HTML5 forms
 app.use(methodOverride('_method'))
-//enables public file to be used
+//enables public folder to be used
 app.use(express.static('public'))
+
+
 
 //custom auth middleware that checks the cookies for a user id
 //if found, look up the user in the database(db)
