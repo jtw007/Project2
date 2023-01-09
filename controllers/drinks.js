@@ -21,7 +21,7 @@ router.get('/:name', async (req, res) => {
         const commentId = await db.comment.findAll({
             where: {
                 drinkName: name 
-            }
+            } 
         })
         res.render('drinks.ejs', {
             display: response.data[0],

@@ -1,5 +1,16 @@
 # Project 2
+Project Link: https://cocktail-api-project2.herokuapp.com/ 
 
+## Installation Instructions
+* To use this project locally, fork and clone this repository. 
+* Next, in your terminal, go to the locally-cloned repository and run `npm init -y` 
+* Open the repo and navigate to `package.json` file and see a list of npm packages listed under `dependencies`
+* Run `npm i` in the terminal to download all the required npm packages. `node_modules` should appear in the folder
+* Check to see if `node_modules` and `.env` are in the `.gitignore` file before committing to the remote repository. If not, run the commands `echo node_modules >> .gitignore` and `echo .env >> .gitignore` 
+* Then go to https://api-ninjas.com/ and sign up for an account. Afterwards, go to `My Account`, copy the API key, then create a variable called `API_KEY` in the `.env` and paste the API key there. Example: `API_KEY='[API key is pasted here, do not include the square brackets]'`
+* Run the following commands: `sequelize db:create` then `sequelize db:migrate`
+* To view the databases, run `psql` in your terminal
+* Then run `nodemon` in your terminal and type in localhost:8000 in your browser
 
 
 ## Project description 
@@ -60,5 +71,7 @@ As a user, I want to be able to:
 * render results to a results page instead of on the home page
 * add an ability for logged in users to edit and customize the recipes they favorite and only after the users favorite the recipe
 * add ability to edit or delete comments 
+
+## Approach Taken 
 
 ## Post-Project Reflections

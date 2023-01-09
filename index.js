@@ -93,9 +93,10 @@ app.get('/', async(req,res) => {
 })
 
 
-//Imports 
+//Imports -- middleware 
 app.use('/users', require('./controllers/users'))
 app.use('/drinks', require('./controllers/drinks'))
+app.use('/users/favorites', require('./controllers/faves'))
 
 
 //listening on a port

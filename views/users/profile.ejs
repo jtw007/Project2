@@ -1,6 +1,6 @@
 <%- include('../partials/header', { user }) %>
 
-<h3 class="text-center mt-4">Hello, <%= user.email %> thanks for logging into the app</h3>
+<h3 class="text-center mt-4">Welcome to your profile, <%= user.email %> thanks for logging into the app</h3>
 
 <form class="text-center mt-4" method="POST" action="/users/<%=user.id%>/?_method=PUT">
     <label for="email">Email:</label>
