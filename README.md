@@ -77,5 +77,5 @@ Overall, I am happy with how this project turned out considering how difficult i
 I felt that I was able to better understand the concepts covered in Unit 2 as a result of this project because I wasn't very solid on the concepts of routes and now I better understand the concepts behind creating routes. One area I had an unsolved problem was the styling of the individual cards within the forEach loops. I was unable to figure out how to style the cards so that they could render in rows of 5. Another problem that was unresolved was figuring out how to differentiate which favorite list belongs to which user. As it stands the favorites list is is the same regardless of who signs in. 
 
 ## Sources
-https://api-ninjas.com/ 
+https://api-ninjas.com/ <br>
 https://getbootstrap.com/docs/5.0/getting-started/introduction/ 
