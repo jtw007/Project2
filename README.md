@@ -20,15 +20,18 @@ Tired of spending too much money at the bar? Want to save some money and potenti
 * HTML
 * Bootstrap
 * CSS
-* Javascript
+* JavaScript
 * Axios
+* Bcrypt
 * Cookie Parser
 * Crypto-JS
 * Dotenv
 * Express
 * EJS
-* Postgres
-* Sequelize
+* PostgresQL
+* Sequelize and Sequelize-Cli
+* Method-Override
+* pg
 
 ## API 
 I will be using this API https://api-ninjas.com/api/cocktail 
