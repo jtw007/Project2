@@ -72,6 +72,10 @@ As a user, I want to be able to:
 * add an ability for logged in users to edit and customize the recipes they favorite and only after the users favorite the recipe
 * add ability to edit or delete comments 
 
-## Approach Taken 
-
 ## Post-Project Reflections
+Overall, I am happy with how this project turned out considering how difficult it was to create. It's not perfect by any means and I am content with that because this is currently what I can achieve with my abilities. That said, I would like to give a shoutout to everyone who helped me with this project because I would not have been able to do this without them. <br>
+I felt that I was able to better understand the concepts covered in Unit 2 as a result of this project because I wasn't very solid on the concepts of routes and now I better understand the concepts behind creating routes. One area I had an unsolved problem was the styling of the individual cards within the forEach loops. I was unable to figure out how to style the cards so that they could render in rows of 5. Another problem that was unresolved was figuring out how to differentiate which favorite list belongs to which user. As it stands the favorites list is is the same regardless of who signs in. 
+
+## Sources
+https://api-ninjas.com/ 
+https://getbootstrap.com/docs/5.0/getting-started/introduction/ 
